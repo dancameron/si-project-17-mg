@@ -27,10 +27,12 @@ add_action( 'sprout_invoices_loaded', 'sa_load_mg_custom_addon' );
 function sa_load_mg_custom_addon() {
 
 	require_once( 'inc/Invoice_Customizations.php' );
+	require_once( 'inc/Line_Item_Customizations.php' );
 	require_once( 'inc/VAT_Modifications.php' );
 	require_once( 'inc/Woo_Commerce_Int_Mods.php' );
 
 	Invoice_Customizations::init();
+	Line_Item_Customizations::init();
 	VAT_Modifications::init();
 	Woo_Commerce_Int_Mods::init();
 
