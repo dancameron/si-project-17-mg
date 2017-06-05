@@ -35,7 +35,7 @@ class Woo_Commerce_Int_Mods extends SI_Controller {
 				'rate' => $item->get_total() / $item->get_quantity(),
 				'qty' => $item->get_quantity(),
 				'desc' => $desc,
-				'total' => $item->get_total(),
+				'total' => $item->get_total() + $item->get_total_tax(),
 				'tax' => 0,
 				'tax_vat' => $vat,
 				);
