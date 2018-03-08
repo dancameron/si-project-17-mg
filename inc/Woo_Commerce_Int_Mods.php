@@ -24,9 +24,9 @@ class Woo_Commerce_Int_Mods extends SI_Controller {
 			// hard coded hack becuase I can't think of a calculation at this time...
 			$vat = 0;
 			if ( $item->get_total_tax() > 0 ) {
-				if ( round( $item->get_total() * .23, 2 ) === (float) $item->get_total_tax() ) {
+				if ( round( $item->get_total() * .23, 2 ) === round( $item->get_total_tax(), 2 ) ) {
 					$vat = 23;
-				} elseif ( round( $item->get_total() * .135, 2 ) === (float) $item->get_total_tax() ) {
+				} elseif ( round( $item->get_total() * .135, 2 ) === round( $item->get_total_tax(), 2 ) ) {
 					$vat = 13.5;
 				}
 			}
@@ -35,7 +35,7 @@ class Woo_Commerce_Int_Mods extends SI_Controller {
 				'rate' => $item->get_total() / $item->get_quantity(),
 				'qty' => $item->get_quantity(),
 				'desc' => $desc,
-				'total' => $item->get_total() + $item->get_total_tax(),
+				'total' => round( $item->get_total() + $item->get_total_tax(), 2 ),
 				'tax' => 0,
 				'tax_vat' => $vat,
 				);
