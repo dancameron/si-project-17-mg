@@ -260,12 +260,12 @@ class SI_Hearts_EU_Mod extends SI_Controller {
 	}
 
 	public static function calculate_tax( $data = array(), $tax = 'tax_vat' ) {
-		$subtotal = ( $data['rate'] * $data['qty'] );
+		$subtotal = ( (int)$data['rate'] * (int)$data['qty'] );
 		return ( isset( $data[ $tax ] ) && $data[ $tax ] ) ? $subtotal * ( $data[ $tax ] / 100 ) : 0 ;
 	}
 
 	public static function calculate_inclusive_vat_tax_total( $data = array() ) {
-		$subtotal = ( $data['rate'] * $data['qty'] );
+		$subtotal = ( (int)$data['rate'] * (int)$data['qty'] );
 		$tax = self::calculate_tax( $data );
 		return $subtotal + $tax;
 	}
